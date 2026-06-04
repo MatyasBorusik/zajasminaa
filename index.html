@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZAJASMINAA</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="bg-white text-[#04395e] font-sans">
+
+  <!-- HEADER -->
+  <header class="max-w-3xl mx-auto text-center px-6 pt-8 pb-4">
+    <a href="#" class="block text-5xl font-bold tracking-widest uppercase text-[#04395e] no-underline mb-3 leading-tight">
+      ZAJASMINAA
+    </a>
+    <!-- Desktop nav -->
+    <nav class="hidden sm:block">
+      <ul class="flex justify-center gap-8 list-none">
+        <li><a href="#" data-section="keramika" class="nav-link text-xs tracking-widest uppercase text-[#04395e] no-underline hover:opacity-60 transition-opacity border-b border-[#04395e]">Keramika</a></li>
+        <li><a href="#" data-section="ilustrace" class="nav-link text-xs tracking-widest uppercase text-[#04395e] no-underline hover:opacity-60 transition-opacity">Ilustrace</a></li>
+        <li><a href="#" data-section="ovci-vlna" class="nav-link text-xs tracking-widest uppercase text-[#04395e] no-underline hover:opacity-60 transition-opacity">Ovčí vlna</a></li>
+      </ul>
+    </nav>
+    <!-- Mobile nav -->
+    <div class="sm:hidden flex items-center justify-between px-1 text-xs tracking-widest uppercase text-[#04395e] font-bold cursor-pointer" id="mobile-nav-toggle">
+      <span id="mobile-nav-label">Keramika</span>
+      <span class="text-base">▾</span>
+    </div>
+    <!-- Mobile dropdown -->
+    <div id="mobile-dropdown" class="hidden sm:hidden flex-col items-start px-1 pt-1 pb-2 gap-2">
+      <a href="#" data-section="keramika" class="nav-link text-xs tracking-widest uppercase text-[#04395e] no-underline">Keramika</a>
+      <a href="#" data-section="ilustrace" class="nav-link text-xs tracking-widest uppercase text-[#04395e] no-underline">Ilustrace</a>
+      <a href="#" data-section="ovci-vlna" class="nav-link text-xs tracking-widest uppercase text-[#04395e] no-underline">Ovčí vlna</a>
+    </div>
+  </header>
+
+  <!-- GRID -->
+  <main class="max-w-3xl mx-auto px-5 pb-10">
+    <div class="grid grid-cols-2 gap-5">
+      <div class="col-left flex flex-col gap-5" id="col-left"></div>
+      <div class="col-right flex flex-col gap-5" id="col-right"></div>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="hidden fixed inset-0 bg-white z-50 flex-col items-center justify-center">
+    <button id="lb-close" class="absolute top-4 right-5 text-[10px] tracking-widest uppercase text-[#04395e] bg-transparent border-none cursor-pointer hover:opacity-50 transition-opacity z-10">
+      Close ✕
+    </button>
+    <button id="lb-prev" class="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-transparent border-none cursor-pointer hover:opacity-40 transition-opacity z-10">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#04395e" stroke-width="1.5" class="w-7 h-7">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+    <img id="lb-img" src="" alt="" class="max-h-[calc(100vh-100px)] max-w-[calc(100vw-120px)] object-contain block select-none">
+    <button id="lb-next" class="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-transparent border-none cursor-pointer hover:opacity-40 transition-opacity z-10">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#04395e" stroke-width="1.5" class="w-7 h-7">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+    <div id="lb-counter" class="absolute bottom-4 text-[10px] tracking-widest text-[#66666e]"></div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
