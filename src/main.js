@@ -2,8 +2,8 @@ import './style.css'
 
 // --- IMAGE DATA PER SECTION ---
 const imageModulesBySection = {
-  'keramika': import.meta.glob('./assets/images/keramika/*.{jpg,jpeg,png}', { eager: true, import: 'default' }),
-  'ilustrace': import.meta.glob('./assets/images/ilustrace/*.{jpg,jpeg,png}', { eager: true, import: 'default' }),
+  keramika: import.meta.glob('./assets/images/keramika/*.{jpg,jpeg,png}', { eager: true, import: 'default' }),
+  ilustrace: import.meta.glob('./assets/images/ilustrace/*.{jpg,jpeg,png}', { eager: true, import: 'default' }),
   'ovci-vlna': import.meta.glob('./assets/images/vlna/*.{jpg,jpeg,png}', { eager: true, import: 'default' }),
 }
 
@@ -46,9 +46,17 @@ const mobileLabel = document.getElementById('mobile-nav-label')
 const mobileDropdown = document.getElementById('mobile-dropdown')
 
 // --- GRID ---
+function isMobile() {
+  return window.innerWidth < 640
+}
+
 function buildGrid(images) {
   colLeft.innerHTML = ''
   colRight.innerHTML = ''
+
+  const mobile = isMobile()
+  colRight.style.display = mobile ? 'none' : ''
+
   images.forEach((src, i) => {
     const item = document.createElement('div')
     item.className = 'grid-item cursor-pointer overflow-hidden relative bg-gray-100'
@@ -60,11 +68,25 @@ function buildGrid(images) {
     img.className = 'w-full h-full object-cover block'
     item.appendChild(img)
     item.addEventListener('click', () => openLightbox(i))
-    if (i % 2 === 0) colLeft.appendChild(item)
-    else colRight.appendChild(item)
+
+    if (mobile) {
+      colLeft.appendChild(item)
+    } else if (i % 2 === 0) {
+      colLeft.appendChild(item)
+    } else {
+      colRight.appendChild(item)
+    }
   })
 }
 
+let lastMobile = isMobile()
+window.addEventListener('resize', () => {
+  const nowMobile = isMobile()
+  if (nowMobile !== lastMobile) {
+    lastMobile = nowMobile
+    buildGrid(currentImages)
+  }
+})
 // --- NAV ---
 function setSection(section) {
   currentSection = section

@@ -22,12 +22,10 @@
 .col-right .grid-item:nth-child(even) { aspect-ratio: 2/3; }
 
 @media (max-width: 640px) {
-  .col-left .grid-item,
-  .col-right .grid-item {
+  .col-left .grid-item {
     aspect-ratio: auto !important;
   }
-  .col-left .grid-item img,
-  .col-right .grid-item img {
+  .col-left .grid-item img {
     height: auto;
     object-fit: contain;
   }
